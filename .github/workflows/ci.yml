@@ -14,3 +14,7 @@ jobs:
           dotnet-version: '8.0.x'
       - run: dotnet restore
       - run: dotnet publish -o app -r ${{ matrix.rid }} --sc /p:PublishSingleFile=true
+      - uses: actions/upload-artifact@v4
+        with:
+          name: app-${{ matrix.rid }}
+          path: app/
